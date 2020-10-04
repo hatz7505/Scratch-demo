@@ -43,7 +43,7 @@ function App() {
   return (
     !isAuthenticating && (
       <div className="App container">
-        <Navbar fluid collapseOnSelect>
+        <Navbar fluid collapseOnSelect className="app-navbar">
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">Scratch</Link>

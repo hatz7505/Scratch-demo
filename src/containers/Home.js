@@ -5,8 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import LoadingIndicator from "../components/LoadingIndicator";
 import "./Home.css";
 
 export default function Home() {
@@ -78,9 +77,7 @@ export default function Home() {
     return (
       <div className="notes">
         {isLoading ? (
-          <div className="loading">
-            <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
-          </div>
+          <LoadingIndicator />
         ) : (
           <>
             <PageHeader>Your Notes</PageHeader>

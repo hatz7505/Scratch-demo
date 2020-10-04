@@ -8,6 +8,7 @@ import { s3Upload } from "../libs/awsLib";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import config from "../config";
+import LoadingIndicator from "../components/LoadingIndicator";
 import "./Notes.css";
 
 export default function Notes() {
@@ -36,7 +37,7 @@ export default function Notes() {
 
         setContent(content);
         setNote(note);
-        setIsLoading(false)
+        setIsLoading(false);
       } catch (e) {
         onError(e);
       }
@@ -59,7 +60,7 @@ export default function Notes() {
 
   function saveNote(note) {
     return API.put("notes", `/notes/${id}`, {
-      body: note
+      body: note,
     });
   }
 
@@ -86,7 +87,7 @@ export default function Notes() {
 
       await saveNote({
         content,
-        attachment: attachment || note.attachment
+        attachment: attachment || note.attachment,
       });
       history.push("/");
     } catch (e) {
@@ -123,11 +124,7 @@ export default function Notes() {
 
   return (
     <div className="Notes">
-      {isLoading && (
-        <div className="loading">
-          <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
-        </div>
-      )}
+      {isLoading && <LoadingIndicator />}
       {note && (
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="content">
@@ -156,16 +153,17 @@ export default function Notes() {
             <FormControl onChange={handleFileChange} type="file" />
           </FormGroup>
           <LoaderButton
+            className="save-button"
             block
             type="submit"
             bsSize="large"
-            bsStyle="primary"
             isLoading={isSaving}
             disabled={!validateForm()}
           >
             Save
           </LoaderButton>
           <LoaderButton
+            className="delete-button"
             block
             bsSize="large"
             bsStyle="danger"
