@@ -153,7 +153,6 @@ export default function Notes() {
             <FormControl onChange={handleFileChange} type="file" />
           </FormGroup>
           <LoaderButton
-            className="save-button"
             block
             type="submit"
             bsSize="large"

@@ -7,16 +7,6 @@
   font-size: 24px;
 }
 
-.Notes .save-button {
-  color: white;
-  background-color: #387afe;
-  border: none
-}
-
-.Notes .save-button:hover {
-  background-color: #6091fa;
-}
-
 .Notes .delete-button {
   color: white;
   background-color: #ff6936;

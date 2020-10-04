@@ -6,6 +6,17 @@
 .Home .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+   margin-bottom: 15px;
+}
+
+.Home .lander .scratch-underline {
+  position: absolute;
+  left: 640px;
+  width: 11%;
+  top: 210px;
+  height: 2.5%;
+  z-index: -1;
+  background-color: #ffeee8;
 }
 
 .Home .lander p {
@@ -20,6 +31,26 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.Home .page-header {
+  border-bottom: none;
+  margin-left: 13px;
+}
+
+.Home .page-header > h1 {
+  font-weight: bold;
+}
+
+.Home .your-notes-underline {
+  position: absolute;
+  left: 150px;
+  width: 14%;
+  top: 132px;
+  height: 2.5%;
+  z-index: -1;
+  background-color: #ffeee8;
+}
+
 .Home .notes p {
   color: #666;
 }
@@ -31,6 +62,20 @@
   margin-right: 20px;
 }
 
+.Home .list-group-item {
+  border: 1px solid #e3f0fe;
+}
+
 .Home .list-group-item:hover {
   background-color: #e3f0fe;
+}
+
+.Home .lander .signup-button {
+  color: white;
+  background-color: #ff6936;
+  border: none;
+}
+
+.Home .lander .signup-button:hover {
+  background-color: #fc845d;
 }

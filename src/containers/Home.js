@@ -60,12 +60,13 @@ export default function Home() {
     return (
       <div className="lander">
         <h1>Scratch</h1>
+        <div className="scratch-underline" />
         <p>A simple note taking app</p>
         <div>
-          <Link to="/login" className="btn btn-info btn-lg">
+          <Link to="/login" className="btn LoaderButton btn-lg">
             Login
           </Link>
-          <Link to="/signup" className="btn btn-success btn-lg">
+          <Link to="/signup" className="btn signup-button btn-lg">
             Signup
           </Link>
         </div>
@@ -80,7 +81,10 @@ export default function Home() {
           <LoadingIndicator />
         ) : (
           <>
-            <PageHeader>Your Notes</PageHeader>
+            <PageHeader>
+              Your Notes
+              <div className="your-notes-underline" />
+            </PageHeader>
             <ListGroup>{renderNotesList(notes)}</ListGroup>
           </>
         )}

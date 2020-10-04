@@ -7,3 +7,20 @@
   from { transform: scale(1) rotate(0deg); }
   to { transform: scale(1) rotate(360deg); }
 }
+
+
+ .LoaderButton {
+    color: white;
+    background-color: #387afe;
+    border: none;
+  }
+
+  .LoaderButton:disabled:hover {
+    background-color: #387afe;
+     color: white;
+  }
+
+  .LoaderButton:hover {
+    background-color: #6091fa;
+     color: white;
+  }

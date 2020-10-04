@@ -6,17 +6,3 @@
   height: 300px;
   font-size: 24px;
 }
-
-.NewNote .LoaderButton {
-  color: white;
-  background-color: #387afe;
-  border: none
-}
-
-.NewNote .LoaderButton:disabled:hover {
-  background-color: #387afe;
-}
-
-.NewNote .LoaderButton:hover {
-  background-color: #6091fa;
-}
