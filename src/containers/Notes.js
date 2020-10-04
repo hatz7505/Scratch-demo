@@ -5,6 +5,8 @@ import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import { onError } from "../libs/errorLib";
 import { s3Upload } from "../libs/awsLib";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import config from "../config";
 import "./Notes.css";
 
@@ -14,7 +16,8 @@ export default function Notes() {
   const history = useHistory();
   const [note, setNote] = useState(null);
   const [content, setContent] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -33,6 +36,7 @@ export default function Notes() {
 
         setContent(content);
         setNote(note);
+        setIsLoading(false)
       } catch (e) {
         onError(e);
       }
@@ -73,7 +77,7 @@ export default function Notes() {
       return;
     }
 
-    setIsLoading(true);
+    setIsSaving(true);
 
     try {
       if (file.current) {
@@ -87,7 +91,7 @@ export default function Notes() {
       history.push("/");
     } catch (e) {
       onError(e);
-      setIsLoading(false);
+      setIsSaving(false);
     }
   }
 
@@ -119,13 +123,18 @@ export default function Notes() {
 
   return (
     <div className="Notes">
+      {isLoading && (
+        <div className="loading">
+          <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
+        </div>
+      )}
       {note && (
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="content">
             <FormControl
               value={content}
               componentClass="textarea"
-              onChange={e => setContent(e.target.value)}
+              onChange={(e) => setContent(e.target.value)}
             />
           </FormGroup>
           {note.attachment && (
@@ -151,7 +160,7 @@ export default function Notes() {
             type="submit"
             bsSize="large"
             bsStyle="primary"
-            isLoading={isLoading}
+            isLoading={isSaving}
             disabled={!validateForm()}
           >
             Save

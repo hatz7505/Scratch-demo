@@ -5,8 +5,9 @@ import { LinkContainer } from "react-router-bootstrap";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import "./Home.css";
-
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
@@ -76,10 +77,16 @@ export default function Home() {
   function renderNotes() {
     return (
       <div className="notes">
-        <PageHeader>Your Notes</PageHeader>
-        <ListGroup>
-          {!isLoading && renderNotesList(notes)}
-        </ListGroup>
+        {isLoading ? (
+          <div className="loading">
+            <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
+          </div>
+        ) : (
+          <>
+            <PageHeader>Your Notes</PageHeader>
+            <ListGroup>{renderNotesList(notes)}</ListGroup>
+          </>
+        )}
       </div>
     );
   }
