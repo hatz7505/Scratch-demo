@@ -91,8 +91,8 @@ export default function Notes() {
       history.push("/");
     } catch (e) {
       onError(e);
-      setIsSaving(false);
     }
+    setIsSaving(false);
   }
 
   function deleteNote() {
@@ -117,8 +117,8 @@ export default function Notes() {
       history.push("/");
     } catch (e) {
       onError(e);
-      setIsDeleting(false);
     }
+    setIsSaving(false);
   }
 
   return (

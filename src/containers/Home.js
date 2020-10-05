@@ -101,9 +101,11 @@ export default function Home() {
       setSearchNotes([]);
       setSearchHeader("No results found");
     }
+    // clear the search value from input on submit
     setSearchData({ search: "" });
   }
 
+  // reset all search state
   function clearSearch() {
     setSearchNotes([]);
     setSearchHeader("");
