@@ -6,8 +6,6 @@ import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
 import LoadingIndicator from "../components/LoadingIndicator";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFrownOpen } from "@fortawesome/free-regular-svg-icons";
 import "./Home.css";
 
 export default function Home() {
@@ -53,7 +51,7 @@ export default function Home() {
         <LinkContainer key="new" to="/notes/new">
           <ListGroupItem>
             <h4>
-              <b>{"\uFF0B"}</b> Create a new note
+              <b>{"\uFF0B"} Create a new note</b>
             </h4>
           </ListGroupItem>
         </LinkContainer>
@@ -124,7 +122,7 @@ export default function Home() {
                     name="search"
                     value={searchData.search}
                     onChange={handleFormChange}
-                    placeholder="Search Notes"
+                    placeholder="Search notes"
                   ></input>
                 </form>
               </div>
@@ -132,12 +130,7 @@ export default function Home() {
             {searchHeader.length ? (
               <>
                 <div className="search-results-header-container">
-                  <div className="search-results-header">
-                    {searchHeader}{" "}
-                    {searchHeader === "No results found" ? (
-                      <FontAwesomeIcon icon={faFrownOpen} />
-                    ) : null}
-                  </div>
+                  <div className="search-results-header">{searchHeader}</div>
                   <button
                     className="btn LoaderButton clear-search"
                     onClick={clearSearch}

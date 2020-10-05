@@ -16,6 +16,9 @@
   color: white;
   background-color: #387afe;
   border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 24px;
 }
 
 .LoaderButton:disabled:hover {

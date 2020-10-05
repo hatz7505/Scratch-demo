@@ -18,11 +18,11 @@
 
 .Home .lander .scratch-underline {
   position: absolute;
-  height: 12px;
+  height: 16px;
   z-index: -1;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  left: -8px;
+  bottom: -4px;
+  right: -8px;
   background-color: #ffeee8;
   padding-top: 0;
 }
@@ -59,11 +59,11 @@
 
 .Home .your-notes-underline {
   position: absolute;
-  height: 12px;
+  height: 16px;
   z-index: -1;
-  left: 0;
-  bottom: -1px;
-  right: 0;
+  left: -8px;
+  bottom: -4px;
+  right: -8px;
   background-color: #ffeee8;
 }
 
@@ -80,6 +80,7 @@
 
 .Home .list-group-item {
   border: 1px solid #e3f0fe;
+  transition: background-color 0.2s;
 }
 
 .Home .list-group-item:hover {
@@ -90,6 +91,9 @@
   color: white;
   background-color: #ff6936;
   border: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 24px;
 }
 
 .Home .lander .signup-button:hover {
@@ -102,13 +106,16 @@
 }
 
 .Home .search-form > input {
-  border: 1.5px solid gray;
-  border-radius: 3px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 0 4px gray;
+  padding: 8px 16px;
 }
 
-.Home .search-error {
-  color: #fc845d;
-  font-size: 24px;
+
+.Home .search-form > input:focus {
+  outline: none;
+  background-color: rgb(245, 243, 243);
 }
 
 .Home .search-results-header-container {
@@ -119,6 +126,9 @@
 
 .Home .clear-search {
   background-color: #ff6936;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin-left: 10px;
 }
 
 .Home .clear-search:hover {
@@ -127,6 +137,6 @@
 
 .Home .search-results-header {
   margin-right: 5px;
-  font-size: 24px;
+  font-size: 18px;
   color: #fc845d;
 }
