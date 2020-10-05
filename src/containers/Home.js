@@ -6,6 +6,8 @@ import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useAppContext } from "../libs/contextLib";
 import { onError } from "../libs/errorLib";
 import LoadingIndicator from "../components/LoadingIndicator";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFrownOpen } from "@fortawesome/free-regular-svg-icons";
 import "./Home.css";
 
 export default function Home() {
@@ -13,7 +15,8 @@ export default function Home() {
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
   const [searchNotes, setSearchNotes] = useState([]);
-  const [searchData, setSeachData] = useState({ search: "" });
+  const [searchData, setSearchData] = useState({ search: "" });
+  const [searchHeader, setSearchHeader] = useState("");
 
   useEffect(() => {
     async function onLoad() {
@@ -80,7 +83,28 @@ export default function Home() {
 
   function handleFormChange(evt) {
     let { name, value } = evt.target;
-    setSeachData((data) => ({ ...data, [name]: value }));
+    setSearchData((data) => ({ ...data, [name]: value }));
+  }
+
+  function handleSearchSubmit(evt) {
+    evt.preventDefault();
+    let newSearchNotes = notes.filter((note) =>
+      note.content.includes(searchData.search)
+    );
+    if (newSearchNotes.length) {
+      setSearchNotes(newSearchNotes);
+      if (newSearchNotes.length === 1) setSearchHeader("1 result found");
+      else setSearchHeader(`${newSearchNotes.length} results found`);
+    } else {
+      setSearchNotes([]);
+      setSearchHeader("No results found");
+    }
+    setSearchData({ search: "" });
+  }
+
+  function clearSearch() {
+    setSearchNotes([]);
+    setSearchHeader("");
   }
 
   function renderNotes() {
@@ -95,7 +119,7 @@ export default function Home() {
                 <div className="header-title-container">
                   Your Notes <div className="your-notes-underline" />
                 </div>
-                <form className="search-form">
+                <form className="search-form" onSubmit={handleSearchSubmit}>
                   <input
                     name="search"
                     value={searchData.search}
@@ -105,7 +129,27 @@ export default function Home() {
                 </form>
               </div>
             </PageHeader>
-            <ListGroup>{renderNotesList(notes)}</ListGroup>
+            {searchHeader.length ? (
+              <>
+                <div className="search-results-header-container">
+                  <div className="search-results-header">
+                    {searchHeader}{" "}
+                    {searchHeader === "No results found" ? (
+                      <FontAwesomeIcon icon={faFrownOpen} />
+                    ) : null}
+                  </div>
+                  <button
+                    className="btn LoaderButton clear-search"
+                    onClick={clearSearch}
+                  >
+                    Clear Search
+                  </button>
+                </div>
+                <ListGroup>{renderNotesList(searchNotes)}</ListGroup>
+              </>
+            ) : (
+              <ListGroup>{renderNotesList(notes)}</ListGroup>
+            )}
           </>
         )}
       </div>

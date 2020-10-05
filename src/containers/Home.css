@@ -105,3 +105,28 @@
   border: 1.5px solid gray;
   border-radius: 3px;
 }
+
+.Home .search-error {
+  color: #fc845d;
+  font-size: 24px;
+}
+
+.Home .search-results-header-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.Home .clear-search {
+  background-color: #ff6936;
+}
+
+.Home .clear-search:hover {
+  background-color: #fc845d;
+}
+
+.Home .search-results-header {
+  margin-right: 5px;
+  font-size: 24px;
+  color: #fc845d;
+}
