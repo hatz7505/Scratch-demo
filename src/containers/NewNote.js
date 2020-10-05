@@ -49,7 +49,7 @@ export default function NewNote() {
 
   function createNote(note) {
     return API.post("notes", "/notes", {
-      body: note
+      body: note,
     });
   }
 
@@ -60,7 +60,7 @@ export default function NewNote() {
           <FormControl
             value={content}
             componentClass="textarea"
-            onChange={e => setContent(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId="file">

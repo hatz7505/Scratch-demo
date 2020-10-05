@@ -11,8 +11,7 @@
   border: none;
 }
 
-.App li.active>a {
+.App li.active > a {
   background-color: #ffeee8 !important;
   font-weight: bold !important;
 }
-

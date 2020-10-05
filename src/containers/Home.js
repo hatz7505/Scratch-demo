@@ -12,6 +12,8 @@ export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();
   const [isLoading, setIsLoading] = useState(true);
+  const [searchNotes, setSearchNotes] = useState([]);
+  const [searchData, setSeachData] = useState({ search: "" });
 
   useEffect(() => {
     async function onLoad() {
@@ -59,8 +61,10 @@ export default function Home() {
   function renderLander() {
     return (
       <div className="lander">
-        <h1>Scratch</h1>
-        <div className="scratch-underline" />
+        <div className="scratch-container">
+          <h1>Scratch</h1>
+          <div className="scratch-underline" />
+        </div>
         <p>A simple note taking app</p>
         <div>
           <Link to="/login" className="btn LoaderButton btn-lg">
@@ -74,6 +78,11 @@ export default function Home() {
     );
   }
 
+  function handleFormChange(evt) {
+    let { name, value } = evt.target;
+    setSeachData((data) => ({ ...data, [name]: value }));
+  }
+
   function renderNotes() {
     return (
       <div className="notes">
@@ -82,8 +91,19 @@ export default function Home() {
         ) : (
           <>
             <PageHeader>
-              Your Notes
-              <div className="your-notes-underline" />
+              <div className="header-container">
+                <div className="header-title-container">
+                  Your Notes <div className="your-notes-underline" />
+                </div>
+                <form className="search-form">
+                  <input
+                    name="search"
+                    value={searchData.search}
+                    onChange={handleFormChange}
+                    placeholder="Search Notes"
+                  ></input>
+                </form>
+              </div>
             </PageHeader>
             <ListGroup>{renderNotesList(notes)}</ListGroup>
           </>

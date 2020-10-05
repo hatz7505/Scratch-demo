@@ -6,17 +6,25 @@
 .Home .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-   margin-bottom: 15px;
+  margin: 0;
+}
+
+.Home .lander .scratch-container {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .Home .lander .scratch-underline {
   position: absolute;
-  left: 640px;
-  width: 11%;
-  top: 210px;
-  height: 2.5%;
+  height: 12px;
   z-index: -1;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-color: #ffeee8;
+  padding-top: 0;
 }
 
 .Home .lander p {
@@ -37,17 +45,25 @@
   margin-left: 13px;
 }
 
-.Home .page-header > h1 {
+.Home .header-title-container {
+  position: relative;
+  display: inline-block;
   font-weight: bold;
+}
+
+.Home .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Home .your-notes-underline {
   position: absolute;
-  left: 150px;
-  width: 14%;
-  top: 132px;
-  height: 2.5%;
+  height: 12px;
   z-index: -1;
+  left: 0;
+  bottom: -1px;
+  right: 0;
   background-color: #ffeee8;
 }
 
@@ -78,4 +94,14 @@
 
 .Home .lander .signup-button:hover {
   background-color: #fc845d;
+}
+
+.Home .search-form {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.Home .search-form > input {
+  border: 1.5px solid gray;
+  border-radius: 3px;
 }
