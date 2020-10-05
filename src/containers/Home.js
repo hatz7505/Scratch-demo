@@ -11,12 +11,13 @@ import "./Home.css";
 export default function Home() {
   const [notes, setNotes] = useState([]);
   const { isAuthenticated } = useAppContext();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchNotes, setSearchNotes] = useState([]);
   const [searchData, setSearchData] = useState({ search: "" });
   const [searchHeader, setSearchHeader] = useState("");
 
   useEffect(() => {
+    setIsLoading(true);
     async function onLoad() {
       if (!isAuthenticated) {
         return;
@@ -79,6 +80,7 @@ export default function Home() {
     );
   }
 
+  // update the search value on every change made to the input
   function handleFormChange(evt) {
     let { name, value } = evt.target;
     setSearchData((data) => ({ ...data, [name]: value }));
@@ -86,9 +88,11 @@ export default function Home() {
 
   function handleSearchSubmit(evt) {
     evt.preventDefault();
+    // filter through notes for notes that contain the searched string
     let newSearchNotes = notes.filter((note) =>
       note.content.includes(searchData.search)
     );
+    // set a header depending on length of searched result
     if (newSearchNotes.length) {
       setSearchNotes(newSearchNotes);
       if (newSearchNotes.length === 1) setSearchHeader("1 result found");

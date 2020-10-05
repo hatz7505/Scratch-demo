@@ -15,11 +15,12 @@ export default function Notes() {
   const history = useHistory();
   const [note, setNote] = useState(null);
   const [content, setContent] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     function loadNote() {
       return API.get("notes", `/notes/${id}`);
     }
